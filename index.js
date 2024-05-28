@@ -12,8 +12,9 @@ import taskRouter from "./routes/task.js"
 import userProfileRouter from "./routes/userProfile.js"
 import webCodeRouter from "./routes/webcode.js"
 
+dotenv.config()
 const app=express()
-dotenv.config().parsed
+dotenv.config()
 app.use(express.json())
 
 
