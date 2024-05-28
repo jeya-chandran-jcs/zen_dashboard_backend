@@ -26,10 +26,7 @@ app.use("/api/task",authentication,taskRouter)
 app.use("/api/webcode",authentication,webCodeRouter)
 app.use("/api/leaderboard",authentication,leaderBoardRouter)
 
-mongoose.connect(process.env.MONGO_URL,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-})
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     app.listen(process.env.PORT,()=>{
         console.log("server is running")
