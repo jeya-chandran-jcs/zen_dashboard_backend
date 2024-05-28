@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 dotenv.config()
 const Email=process.env.EMAIL
 const Pass=process.env.PASS
-let sendmail =async (receiver, text, html, subject) => {
+let sendmail =async (receiver, subject, text, html) => {
   let transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -15,11 +15,10 @@ let sendmail =async (receiver, text, html, subject) => {
 
 
   let mailOption = {
-    
+    from:Email,
     to: receiver,
     subject: subject,
-    text: text,
-    html: html,
+    text: text
   };
   
   

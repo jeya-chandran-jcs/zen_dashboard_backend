@@ -67,17 +67,17 @@ router.post("/register",async(req,res)=>{
         }
         const resetToken=jwt.sign({id:user._id},secretKey,{expiresIn:"1h"})
 
-        const PasswordResetLink=`http://localhost:3000/resetpassword/${resetToken}`
+        let PasswordResetLink=`http://localhost:3000/resetpassword/${resetToken}`
 
         const mailOption={
             from:Email,
             to:user.email,
             subject:"password reset",
-            text:`You requested a password reset.\n Click the link below to reset your password:\n\n${PasswordResetLink}\n\nIf you did not request a password reset, please ignore this email.`,
-            html:"<p> if you did not request a password reset, please ignore this email</p>"
+            text:"<p> if you did not request a password reset, please ignore this email</p>",
+            html:`You requested a password reset.\n Click the link below to reset your password:\n\n ${PasswordResetLink} \n\nIf you did not request a password reset, please ignore this email.`
         }
 
-        sendmail(mailOption.to,mailOption.subject,mailOption.text,mailOption.html)
+        sendmail(mailOption.to,mailOption.subject,mailOption.html,mailOption.text)
 
         sendmail ? res.status(200).json({message:"password reset link sent to your email"}) :
         res.status(400).json({message:"unable to send password reset link"})
