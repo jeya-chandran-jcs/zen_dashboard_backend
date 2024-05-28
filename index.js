@@ -16,6 +16,8 @@ dotenv.config()
 const app=express()
 app.use(express.json())
 app.use(cors())
+const MongoURL=process.env.MONGO_URL
+const Port=process.env.PORT || 6000
 
 app.use("/api/student",studentRouter)
 app.use("/api/profile",userProfileRouter)
@@ -26,12 +28,9 @@ app.use("/api/task",authentication,taskRouter)
 app.use("/api/webcode",authentication,webCodeRouter)
 app.use("/api/leaderboard",authentication,leaderBoardRouter)
 
-mongoose.connect(process.env.MONGO_URL)
+
+mongoose.connect(MongoURL)
 .then(()=>{
-    app.listen(process.env.PORT,()=>{
-        console.log("server is running")
-    })
+    app.listen(Port,()=>{ console.log(`server is running on port ${Port}`) })
 })
-.catch((error)=>{
-    console.log(error)
-})
+.catch(err=>{ console.log(err) })
