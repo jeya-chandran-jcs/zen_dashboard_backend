@@ -1,6 +1,6 @@
 import express from "express"
 import mongoose from "mongoose"
-import dotenv from "dotenv"
+import * as dotenv from "dotenv"
 import cors from "cors"
 import authentication  from "./middleware.js"
 import capstoneRouter from "./routes/capstone.js"
@@ -12,9 +12,10 @@ import taskRouter from "./routes/task.js"
 import userProfileRouter from "./routes/userProfile.js"
 import webCodeRouter from "./routes/webcode.js"
 
-dotenv.config()
 const app=express()
 app.use(express.json())
+
+dotenv.config()
 app.use(cors())
 const MongoURL=process.env.MONGO_URL
 const Port=process.env.PORT || 6000
