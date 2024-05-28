@@ -13,9 +13,10 @@ import userProfileRouter from "./routes/userProfile.js"
 import webCodeRouter from "./routes/webcode.js"
 
 const app=express()
+dotenv.config().parsed
 app.use(express.json())
 
-dotenv.config()
+
 app.use(cors())
 const MongoURL=process.env.MONGO_URL
 const Port=process.env.PORT || 6000
@@ -31,7 +32,15 @@ app.use("/api/leaderboard",authentication,leaderBoardRouter)
 
 
 mongoose.connect(MongoURL)
-.then(()=>{
-    app.listen(Port,()=>{ console.log(`server is running on port ${Port}`) })
+.then(()=>
+    {
+    app.listen(Port,()=>
+        { 
+            console.log(`server is running on port ${Port}`) 
+        })
+    })
+.catch(err=>
+    { 
+        console.log(err) 
+
 })
-.catch(err=>{ console.log(err) })
