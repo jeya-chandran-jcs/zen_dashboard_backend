@@ -20,7 +20,7 @@ app.use(express.json())
 
 app.use(cors())
 const MongoURL=process.env.MONGO_URL
-const Port=process.env.PORT || 6000
+const POrt=5000
 
 app.use("/api/student",studentRouter)
 app.use("/api/profile",userProfileRouter)
@@ -35,9 +35,9 @@ app.use("/api/leaderboard",authentication,leaderBoardRouter)
 mongoose.connect(MongoURL)
 .then(()=>
     {
-    app.listen(Port,()=>
+    app.listen(POrt,()=>
         { 
-            console.log(`server is running on port ${Port}`) 
+            console.log(`server is running on port ${POrt}`) 
         })
     })
 .catch(err=>
