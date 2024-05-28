@@ -22,6 +22,17 @@ app.use(cors())
 const MongoURL=process.env.MONGO_URL
 const POrt=5000
 
+mongoose.connect(MongoURL,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+.then(()=>{
+    console.log("MongoDB connected")
+    })
+.catch(err=>
+    {  console.log("db connnection error",err) })
+
+
 app.use("/api/student",studentRouter)
 app.use("/api/profile",userProfileRouter)
 app.use("/api/class",authentication,classRouter)
@@ -32,16 +43,4 @@ app.use("/api/webcode",authentication,webCodeRouter)
 app.use("/api/leaderboard",authentication,leaderBoardRouter)
 
 
-mongoose.connect(MongoURL)
-.then(()=>
-    {
-    app.listen(POrt,()=>
-        { 
-            console.log(`server is running on port ${POrt}`) 
-        })
-    })
-.catch(err=>
-    { 
-        console.log(err) 
-
-})
+app.listen(POrt,()=>{console.log("server is running",POrt)})
