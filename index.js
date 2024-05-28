@@ -14,18 +14,14 @@ import webCodeRouter from "./routes/webcode.js"
 
 dotenv.config()
 const app=express()
-dotenv.config()
 app.use(express.json())
 
 
 app.use(cors())
-const MongoURL="mongodb+srv://jeyachandranjcs:xIQr7sZOTgMYJ6Lq@cluster0.gfxymhk.mongodb.net/zen_dashBoard"
+const Mongo_URL="mongodb+srv://jeyachandranjcs:xIQr7sZOTgMYJ6Lq@cluster0.gfxymhk.mongodb.net/zen_dashBoard"
 const POrt=5000
 
-mongoose.connect(MongoURL,{
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+mongoose.connect(Mongo_URL)
 .then(()=>{
     console.log("MongoDB connected")
     })
