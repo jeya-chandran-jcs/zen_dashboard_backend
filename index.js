@@ -19,10 +19,10 @@ app.use(express.json())
 
 
 app.use(cors())
-const MongoURL=process.env.MONGO_URL
+const MongoURL="mongodb+srv://jeyachandranjcs:xIQr7sZOTgMYJ6Lq@cluster0.gfxymhk.mongodb.net/zen_dashBoard"
 const POrt=5000
 
-mongoose.connect(process.env.MONGO_URL,{
+mongoose.connect(MongoURL,{
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
