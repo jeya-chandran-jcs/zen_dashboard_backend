@@ -18,7 +18,7 @@ app.use(express.json())
 
 
 app.use(cors())
-const Mongo_URL="mongodb+srv://jeyachandranjcs:xIQr7sZOTgMYJ6Lq@cluster0.gfxymhk.mongodb.net/zen_dashBoard"
+const Mongo_URL=process.env.MONGO_URl
 const POrt=5000
 
 mongoose.connect(Mongo_URL)
