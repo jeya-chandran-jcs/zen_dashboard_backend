@@ -21,7 +21,7 @@ router.post("/post",async(req,res)=>{
 
 router.get("/get",async(req,res)=>{
     try{
-        const data= await leaderBoardModel.find()
+        const data= await leadermodel.find()
         data ? res.status(200).json(data) : res.status(400).json({message:"unable to fetch data"})
     }
     catch(error){
