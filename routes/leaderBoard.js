@@ -1,12 +1,12 @@
 import express from "express";
-import leaderBoardModel from "../models/leaderSchema.js";
+import leadermodel from "../models/leaderSchema.js";
 const router = express.Router();
 
 router.post("/post",async(req,res)=>{
     try{
         const {name,batch,learning}=req.body
 
-        const newLeader=new leaderBoardModel({name,batch,learning})
+        const newLeader=new leadermodel({name,batch,learning})
 
         await newLeader.save()
 
