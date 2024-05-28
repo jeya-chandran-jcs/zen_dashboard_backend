@@ -22,7 +22,7 @@ app.use(cors())
 const MongoURL=process.env.MONGO_URL
 const POrt=5000
 
-mongoose.connect(MongoURL,{
+mongoose.connect(process.env.MONGO_URL,{
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
